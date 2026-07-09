@@ -2,12 +2,13 @@ project(
   'scratch-meson-module-tests',
   'cpp',
   version: '0.0.1',
-  meson_version: '>=0.50.0',
+  meson_version: '>=1.12.0',
   license: 'MIT WITH fmt-exception',
   default_options: ['cpp_std=c++23']
 )
 
-fmt_module_dep = dependency('fmt-module', fallback: ['fmt'])
+std_dep = dependency('std')
+fmt_module_dep = dependency('fmt-module', fallback: ['fmt'], default_options: ['module-flavor=import-std'])
 fmt_using_library_dep = dependency('fmt-using-library', fallback: ['subproject_using_fmt'])
 cpr_has_header_unit_dep = dependency('cpr-as-header-unit', fallback: ['cpr_has_header_unit'])
 
@@ -41,6 +42,5 @@ gio_module_dep = declare_dependency(
 )
 ######## end peel gio stuff #########
 
-std_dep = dependency('std')
 exe = executable('hello', 'src/main.cpp',
                  dependencies: [gio_module_dep, std_dep, fmt_using_library_dep, cpr_has_header_unit_dep])
