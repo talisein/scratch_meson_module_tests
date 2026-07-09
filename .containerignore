@@ -1,0 +1,7 @@
+.git
+build
+build-*
+Containerfile
+subprojects/*
+!subprojects/*.wrap
+subprojects/.#*

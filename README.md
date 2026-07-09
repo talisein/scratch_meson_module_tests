@@ -25,8 +25,15 @@ The build references some forks:
 | [cpr (a c++ curl wrapper) with a header unit meson.build](https://github.com/talisein/cpr_has_header_unit.git) |
 | [peel (a c++ GObject introspection source generator) that produces module interfaces](https://gitlab.gnome.org/talisein/peel/-/tree/emit-cpp-modules?ref_type=heads) |
 
-## gcc 16
+## gcc 16. gcc 15 compile fails due to my peel prototype exposing TU-local entity. Not a meson issue, it does its job. 14 gracefully fails due to no import std.
 `python path-to-talisein-meson/meson.py setup build -Dcpp_std=c++23`
 
-## clang 22
+## clang 22, 21, 20. 19 fails gracefully due to no import std.
 `CXX=clang++ python path-to-talisein-meson/meson.py setup build-clang -Dcpp_std=c++23`
+
+
+# Run in a container
+```bash
+podman build -t modtest-f44 --build-arg BASE_IMAGE=fedora:44 .
+podman run --rm modtest-f44
+```
