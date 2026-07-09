@@ -1,0 +1,4 @@
+[wrap-git]
+url=https://github.com/talisein/cpr_has_header_unit.git
+revision=HEAD
+depth=1

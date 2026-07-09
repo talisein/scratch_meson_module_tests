@@ -1,0 +1,7 @@
+[wrap-git]
+url=https://github.com/talisein/fmt_meson_modules.git
+revision=HEAD
+depth=1
+
+[provide]
+fmt-module = fmt_module_dep

@@ -1,0 +1,8 @@
+[wrap-git]
+url=https://gitlab.gnome.org/talisein/peel.git
+revision=emit-cpp-modules
+depth=1
+
+[provide]
+peel = peel_dep
+program_names = peel-gen
