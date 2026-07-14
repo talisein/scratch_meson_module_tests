@@ -15,13 +15,15 @@ bool describe_uses_every_unit() {
   return text.starts_with("square (4 sides)") && text.contains("secret");
 }
 
-bool objects_are_cxx20_but_bmi_is_cxx23() {
-  return widget::compiled_dialect() == 202002L && widget::interface_dialect() == 202302L;
+// Not a literal for the newer dialect: cl's /std:c++latest reports its own value.
+bool objects_are_cxx20_but_bmi_is_newer() {
+  return widget::compiled_dialect() == 202002L &&
+         widget::interface_dialect() > widget::compiled_dialect();
 }
 
 const bool registered = [] {
   test::register_test("widget module vocabulary", &describe_uses_every_unit);
-  test::register_test("C++20 objects, C++23 BMI", &objects_are_cxx20_but_bmi_is_cxx23);
+  test::register_test("c++20 objects, newer BMI", &objects_are_cxx20_but_bmi_is_newer);
   return true;
 }();
 
