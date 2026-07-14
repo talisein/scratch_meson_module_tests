@@ -53,7 +53,8 @@ widget_dep = declare_dependency(
 
 # Use the c++20 library in a c++23 dialect executable.
 # BMI classes don't just split on dialect: -D, cpp_eh, -f, etc etc. The
-# implementation is an allowlist, e.g. -O -g doesn't change bmi.
+# implementation is an allowlist, e.g. -O -g doesn't change bmi. Anything left
+# after the allowlist is hashed together.
 exe = executable('hello', 'src/main.cpp', 'src/compat.cpp',
                  cpp_header_units: ['cpr/cpr.h'],
                  dependencies: [greeting_dep, widget_dep, std_dep,
