@@ -14,14 +14,14 @@ gcc_rc=1
 echo "==================== gcc: meson setup build ===================="
 if meson setup build "$@" -Dcpp_std=c++23; then
     echo "==================== gcc: ninja -C build ===================="
-    ninja -C build && build/hello && gcc_rc=0
+    ninja -C build && build/hello && meson test -C build && gcc_rc=0
 fi
 
 clang_rc=1
 echo "==================== clang: meson setup build-clang ===================="
 if CC=clang CXX=clang++ meson setup build-clang "$@" -Dcpp_std=c++23; then
     echo "==================== clang: ninja -C build-clang ===================="
-    ninja -C build-clang && build-clang/hello && clang_rc=0
+    ninja -C build-clang && build-clang/hello && meson test -C build-clang && clang_rc=0
 fi
 
 echo

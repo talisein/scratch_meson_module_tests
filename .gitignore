@@ -1,0 +1,5 @@
+# wrap checkouts and downloads; .wrap files and packagefiles are tracked
+/subprojects/*/
+!/subprojects/packagefiles/
+/subprojects/packagecache/
+/subprojects/.wraplock

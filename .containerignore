@@ -4,4 +4,5 @@ build-*
 Containerfile
 subprojects/*
 !subprojects/*.wrap
+!subprojects/packagefiles
 subprojects/.#*
