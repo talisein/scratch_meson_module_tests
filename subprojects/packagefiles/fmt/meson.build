@@ -14,14 +14,10 @@ project(
 # format.cc and os.cc itself (hence the 'src' include dir), so there is no
 # separate non-module library to build here. FMT_IMPORT_STD makes it say
 # 'import std;' rather than #including the standard headers.
-#
-# clang and cl only accept .cppm/.ixx as a module interface, and upstream ships
-# a .cc, so copy it.
-fmt_cppm = configure_file(input: 'src/fmt.cc', output: 'fmt.cppm', copy: true)
 
 fmt_lib = library(
-  'fmt',
-  fmt_cppm,
+  'fmt', 'src/fmt.cc',
+  cpp_module_interfaces: 'src/fmt.cc',
   cpp_args: ['-DFMT_IMPORT_STD'],
   include_directories: ['src', 'include'],
   dependencies: dependency('std'),
